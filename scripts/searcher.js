@@ -32,7 +32,7 @@
             var pageId = $('input:checked', '#pages').val().toString();
             this.keyword = $('#keyword').val();
             this.results = [];
-            var initUrl = '/v2.0/' + pageId + '/feed?limit=40';
+            var initUrl = '/v2.0/' + pageId + '/feed?limit=40&fields=message';
             this.index = 1;
             this.recur(initUrl);
         };
