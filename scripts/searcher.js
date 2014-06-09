@@ -32,7 +32,7 @@
             var pageId = $('input:checked', '#pages').val().toString();
             this.keyword = $('#keyword').val();
             this.results = [];
-            var initUrl = '/v2.0/' + pageId + '/feed?limit=40&fields=message';
+            var initUrl = '/v2.0/' + pageId + '/feed?limit=40&fields=message,actions';
             this.index = 1;
             this.recur(initUrl);
         };
@@ -53,8 +53,8 @@
                 for (var i=0; i<posts.data.length; ++i) {
                     if (posts.data[i].message) {
                         if (posts.data[i].message.indexOf(self.keyword) !== -1){
-                            self.results.push(posts.data[i].message);
-                            $('#result').append('<div class="post">' + posts.data[i].message + '</div>');
+                            //self.results.push(posts.data[i].message);
+                            $('#result').append('<div class="post">' + posts.data[i].message + '<a href="' + posts.data[i].actions[0].link + '" class="link" target="_blank">連結至貼文</a></div>');
                         }
                     }
                 }
